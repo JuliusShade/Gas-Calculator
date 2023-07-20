@@ -1,0 +1,47 @@
+  .calculator-container {
+    background-color: rgb(239, 238, 238);
+    transition: box-shadow 0.3s, background-color 0.3s ease;
+  }
+  
+  .calculator-container:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .logo {
+    height: 55px;
+    width: 110px;
+  }
+  
+  .gas-price {
+    font-size: 18px;
+  }
+
+  .fetch-button {
+    margin-top: 3px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #f00;
+  }
+  
+  .fetch-button:hover {
+    background-color: rgb(190, 0, 0);
+  }

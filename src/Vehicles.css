@@ -1,0 +1,122 @@
+.container {
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .mpg-input,
+  .miles-input {
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .add-vehicle-btn,
+  .remove-vehicle-btn,
+  .calculate-btn {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-vehicle-btn:hover,
+  .remove-vehicle-btn:hover,
+  .calculate-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .calculation-container {
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .calculation-container.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .calculation-title {
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .calculation-value {
+    color: black;
+    font-size: 16px;
+    margin-bottom: 5px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .calculation-value.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .vehicle-item-enter {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  
+  .vehicle-item-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+  }
+  
+  .vehicle-item-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .vehicle-item-exit-active {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  }
+
+  .miles-inputs {
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-group {
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-group p {
+    margin-right: 10px;
+    color: black;
+  }
+  
+  .input-group input {
+    margin-bottom: -10px;
+  }
+
+  input.percentile-input {
+    position: absolute;
+    top: -50px;
+    width: 30px;
+    padding-right: 50px;
+    margin-left: 190px;
+  }
+
+input.percentile-input::-webkit-inner-spin-button,
+input.percentile-input::-webkit-outer-spin-button {
+  margin-right: -50px; /* Adjust the margin as needed */
+}
+
+input.percentile-input::placeholder,
+input.percentile-input::placeholder {
+  font-size: 10px; /* Adjust the font size as needed */
+}
