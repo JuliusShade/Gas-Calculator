@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchGasPrice } from './actions';
-import GasCalculator from './Vehicles';
 import './Calculator.css';
 import FirstDiversity from './Pictures/First-Diversity-Logo.png'
 
@@ -21,7 +20,7 @@ const Calculator = () => {
   return (
     <div className="calculator-container">
       <div className="header">
-        <img src={FirstDiversity} className="logo"/>
+        <img src={FirstDiversity} className="logo" alt="First Diversity Logo"/>
         {loading ? (
           <button disabled>Loading...</button>
         ) : (
