@@ -25,6 +25,22 @@ const VehicleRoutes = ({ gasPrice }) => {
     });
   };
 
+  const handleRemoveRoute = (id) => {
+    setRoutes(prevRoutes => prevRoutes.filter(route => route.id !== id));
+  };
+
+  const handleRouteNameChange = (id, value) => {
+    setRoutes(prevRoutes => {
+      const updatedRoutes = prevRoutes.map(route => {
+        if (route.id === id) {
+          return { ...route, name: value };
+        }
+        return route;
+      });
+      return updatedRoutes;
+    });
+  };
+
   return (
     <div className="vehicle-routes-container">
       <TransitionGroup>
@@ -32,14 +48,20 @@ const VehicleRoutes = ({ gasPrice }) => {
           <CSSTransition key={route.id} classNames="route" timeout={500}>
             <div className="route">
               {/* Existing code */}
-              <GasCalculator
-                gasPrice={gasPrice} // Pass the gasPrice prop to the GasCalculator component
-                vehicles={route.vehicles}
-                setVehicles={(updatedVehicles) =>
-                  handleGasCalculatorChange(route.id, updatedVehicles)
-                }
+                <input
+                type="text"
+                value={route.name}
+                onChange={(e) => handleRouteNameChange(route.id, e.target.value)}
+                placeholder="Route Name"
+                className="route__name"
               />
-              {/* Existing code */}
+              <button className="remove-route-button" onClick={() => handleRemoveRoute(route.id)}>Remove Route</button>
+                <GasCalculator
+                  gasPrice={gasPrice} // Pass the gasPrice prop to the GasCalculator component
+                  vehicles={route.vehicles}
+                  setVehicles={(updatedVehicles) =>
+                  handleGasCalculatorChange(route.id, updatedVehicles)}
+                />
             </div>
           </CSSTransition>
         ))}
