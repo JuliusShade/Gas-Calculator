@@ -13,22 +13,6 @@ const VehicleRoutes = ({ gasPrice }) => {
     setNextId((prevId) => prevId + 1);
   };
 
-  const handleRemoveRoute = (id) => {
-    setRoutes((prevRoutes) => prevRoutes.filter((route) => route.id !== id));
-  };
-
-  const handleRouteNameChange = (id, value) => {
-    setRoutes((prevRoutes) => {
-      const updatedRoutes = prevRoutes.map((route) => {
-        if (route.id === id) {
-          return { ...route, name: value };
-        }
-        return route;
-      });
-      return updatedRoutes;
-    });
-  };
-
   const handleGasCalculatorChange = (id, vehicles) => {
     setRoutes((prevRoutes) => {
       const updatedRoutes = prevRoutes.map((route) => {
