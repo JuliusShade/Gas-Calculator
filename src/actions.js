@@ -30,7 +30,7 @@ export const fetchGasPrice = () => {
   return async (dispatch) => {
     dispatch(fetchGasPriceRequest());
     try {
-      const response = await fetch('http://localhost:3001/api/gas-price');
+      const response = await fetch('https://gas-data-scraper-cc40184cf881.herokuapp.com/api/gas-price');
       const data = await response.json();
       if (response.ok) {
         dispatch(fetchGasPriceSuccess(data.gasPrice));

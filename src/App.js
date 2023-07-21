@@ -1,19 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Calculator from './Calculator';
-import GasCalculatorRoute from './VehicleRoutes';
+import VehicleRoutes from './VehicleRoutes'; // Correct the import statement
 import ParticlesBackground from './ParticlesBackground';
 
 function App() {
-  const [gasPrice, setGasPrice] = React.useState(null);
-  const [loading, setLoading] = React.useState(true);
-
+  const [gasPrice, setGasPrice] = useState(null);
+  const [loading, setLoading] = useState(true);
+  
   useEffect(() => {
     const fetchGasPrice = async () => {
       try {
+        // Your API call to fetch gas price data
+        // Replace this with the actual API endpoint
         const response = await fetch('http://localhost:3001/api/gas-price');
         const data = await response.json();
-        console.log('API response:', data);
 
         if (response.ok) {
           setGasPrice(data.gasPrice);
@@ -33,13 +34,17 @@ function App() {
   return (
     <div className="App">
       <ParticlesBackground />
-      {!loading ? (
-        <>
-          <Calculator gasPrice={gasPrice} />
-          <GasCalculatorRoute gasPrice={gasPrice} />
-        </>
+      {loading ? (
+        <div className="loading-text">Loading Application...</div>
       ) : (
-        <div>Loading gas price...</div>
+        <div className="content-container">
+          <div className="calculator-container">
+            <Calculator gasPrice={gasPrice} setGasPrice={setGasPrice} />
+          </div>
+          <div className="routes-container">
+            <VehicleRoutes gasPrice={gasPrice} />
+          </div>
+        </div>
       )}
     </div>
   );

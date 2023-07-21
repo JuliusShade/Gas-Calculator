@@ -1,49 +1,49 @@
 import { combineReducers } from 'redux';
 import {
-SET_GAS_PRICE,
-FETCH_GAS_PRICE_REQUEST,
-FETCH_GAS_PRICE_SUCCESS,
-FETCH_GAS_PRICE_FAILURE,
+  SET_GAS_PRICE,
+  FETCH_GAS_PRICE_REQUEST,
+  FETCH_GAS_PRICE_SUCCESS,
+  FETCH_GAS_PRICE_FAILURE,
 } from './actions';
 
 const initialState = {
-gasPrice: null,
-loading: true,
-error: null,
+  gasPrice: null,
+  loading: false,
+  error: null,
 };
 
 const gasPriceReducer = (state = initialState.gasPrice, action) => {
-switch (action.type) {
+  switch (action.type) {
     case SET_GAS_PRICE:
     case FETCH_GAS_PRICE_SUCCESS:
-    return action.payload;
+      return action.payload;
     default:
-    return state;
-}
+      return state;
+  }
 };
 
 const loadingReducer = (state = initialState.loading, action) => {
-switch (action.type) {
+  switch (action.type) {
     case FETCH_GAS_PRICE_REQUEST:
-    return true;
+      return true;
     case FETCH_GAS_PRICE_SUCCESS:
     case FETCH_GAS_PRICE_FAILURE:
-    return false;
+      return false;
     default:
-    return state;
-}
+      return state;
+  }
 };
 
 const errorReducer = (state = initialState.error, action) => {
-switch (action.type) {
+  switch (action.type) {
     case FETCH_GAS_PRICE_REQUEST:
     case FETCH_GAS_PRICE_SUCCESS:
-    return null;
+      return null;
     case FETCH_GAS_PRICE_FAILURE:
-    return action.payload;
+      return action.payload;
     default:
-    return state;
-}
+      return state;
+  }
 };
 
 const rootReducer = combineReducers({
@@ -51,6 +51,5 @@ const rootReducer = combineReducers({
     loading: loadingReducer,
     error: errorReducer,
   });
-  
-export default rootReducer;
 
+export { rootReducer };

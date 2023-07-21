@@ -1,34 +1,38 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchGasPrice } from './actions';
+import React, { useState } from 'react';
 import './Calculator.css';
-import FirstDiversity from './Pictures/First-Diversity-Logo.png'
+import FirstDiversity from './Pictures/First-Diversity-Logo.png';
 
-const Calculator = () => {
-  const gasPrice = useSelector(state => state.gasPrice);
-  const loading = useSelector(state => state.loading);
-  const dispatch = useDispatch();
+const Calculator = ({ setGasPrice }) => {
+  const [localGasPrice, setLocalGasPrice] = useState('');
+  const [lastGasPrice, setLastGasPrice] = useState(null);
 
-  useEffect(() => {
-    dispatch(fetchGasPrice());
-  }, [dispatch]);
+  const handleGasPriceChange = (event) => {
+    setLocalGasPrice(event.target.value);
+  };
 
-  const handleFetchGasPrice = () => {
-    dispatch(fetchGasPrice());
+  const handleSetGasPrice = () => {
+    const newGasPrice = parseFloat(localGasPrice); // Convert to a floating-point number
+    setGasPrice(newGasPrice);
+    setLastGasPrice(newGasPrice.toFixed(2)); // Update the lastGasPrice state with 2 decimal places
   };
 
   return (
     <div className="calculator-container">
       <div className="header">
-        <img src={FirstDiversity} className="logo" alt="First Diversity Logo"/>
-        {loading ? (
-          <button disabled>Loading...</button>
-        ) : (
-          <>
-            <button className="fetch-button" onClick={handleFetchGasPrice}>Fetch Gas Price</button>
-            <div className="gas-price">Gas price: ${gasPrice}</div>
-          </>
+        <img src={FirstDiversity} className="logo" alt="First Diversity Logo" />
+        {lastGasPrice !== null && (
+          <div className="last-gas-price">Last Gas Price: ${lastGasPrice}</div>
         )}
+        <div className="gas-price-input">
+          <input
+            type="number"
+            placeholder="Enter Gas Price"
+            value={localGasPrice}
+            onChange={handleGasPriceChange}
+            className="gas-input"
+          />
+          <button onClick={handleSetGasPrice} className="fetch-button">Set Gas Price</button>
+        </div>
       </div>
     </div>
   );

@@ -45,3 +45,12 @@
   .fetch-button:hover {
     background-color: rgb(190, 0, 0);
   }
+
+  input.gas-input {
+    width: 55px;
+    margin-right: 5px;
+  }
+
+  input.gas-input.placeholder {
+    font-size: 8px;
+  }
