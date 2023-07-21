@@ -47,10 +47,6 @@
   }
 
   input.gas-input {
-    width: 55px;
+    width: 110px;
     margin-right: 5px;
-  }
-
-  input.gas-input.placeholder {
-    font-size: 8px;
   }
